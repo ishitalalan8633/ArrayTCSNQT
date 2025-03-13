@@ -1,0 +1,50 @@
+{
+    public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String input = scanner.nextLine();
+    String[] values = input.split(",");
+    int[] arr = new int[values.length];
+     for (int i = 0; i < values.length; i++) {
+            try {
+                arr[i] = Integer.parseInt(values[i]); // Trim spaces and parse the integer
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: '" + values[i] + "' is not a valid number.");
+            }
+        }
+    int target = findSecondLargestElement(arr);
+    System.out.println("Second Largest is" +" " +target);
+    int result = findSecondSmallestElement(arr);
+    System.out.println(" Second smallest is" +" "+result);
+
+}
+    public static int findSecondLargestElement(int arr[]){
+    Arrays.sort(arr);
+    int largest = arr[arr.length - 1];
+    int slargest = 0;
+    for(int i=arr.length-2; i>=0; i--){
+        if(arr[i] != largest){
+            slargest = arr[i];
+            break;
+        }else{
+            return -1;
+        }
+    }
+    return slargest;
+    
+}
+    public static int findSecondSmallestElement(int arr[]){
+    Arrays.sort(arr);
+    int smallest = arr[0];
+    int ssmallest = 0;
+    for(int i=1;i<arr.length;i++){
+        if(arr[i] !=smallest){
+            ssmallest=arr[i];
+            break;
+            
+        }else{
+            return -1;
+        }
+    }
+    return ssmallest;
+}
+}
